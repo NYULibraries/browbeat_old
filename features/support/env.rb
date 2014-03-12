@@ -4,7 +4,7 @@ require 'capybara'
 require 'rspec'
 Figs.load()
 
-if ENV.fetch("SAUCE",false)
+if ENV.fetch("SAUCE","").downcase.eql? "true"
   require 'sauce/cucumber'
 end
 
