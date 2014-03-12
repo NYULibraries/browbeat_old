@@ -9,4 +9,5 @@ Capybara.default_wait_time = 60
 
 
 require_relative "helpers/helpers"
-World(Helpers)
+require_relative "helpers/dynamic_helpers"
+World(NyuLibraries::Primo::Helpers, NyuLibraries::Core::Helpers::DynamicHelpers)
