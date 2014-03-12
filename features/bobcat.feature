@@ -1,4 +1,4 @@
-# @selenium
+@selenium
 Feature: Bobcat Default Precision Operator Search brief results page.
   As a user.
   In order to find resources by title containing a phrase
