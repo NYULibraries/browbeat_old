@@ -11,6 +11,7 @@ end
 Capybara.default_driver = :selenium
 Capybara.default_wait_time = 60
 
-require_relative "helpers/helpers"
-require_relative "helpers/dynamic_helpers"
-World(NyuLibraries::Primo::Helpers, NyuLibraries::Core::Helpers::DynamicHelpers)
+require_relative "helpers/core/dynamic_helpers"
+require_relative "helpers/Primo/helpers"
+require_relative "helpers/Primo/step_helpers"
+World(NyuLibraries::Primo::Helpers, NyuLibraries::Primo::StepHelpers, NyuLibraries::Core::Helpers::DynamicHelpers)

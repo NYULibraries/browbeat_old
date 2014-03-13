@@ -5,6 +5,11 @@ module NyuLibraries
       def driver
         @driver ||= page.driver.browser
       end
+      
+      def bobcat_header_spans
+        header.native.find_elements(:tag_name, "span")
+      end
+      
       # Navigate to the current @view and @tab
       def navigate_to_tab()
         driver.navigate.to "#{@search_url}?vid=#{@view}"
@@ -191,7 +196,7 @@ module NyuLibraries
       
       # Return the array of facet boxes
       def facets_boxes()
-        facets.find_elements(:class, "box")
+        facets.all(".box")
       end
     
       # Return the specified facet box. Default to the first box.
@@ -227,11 +232,11 @@ module NyuLibraries
       
       # Return the array of results list items
       def results_list_items()
-        results_list.find_elements(:class, "result")
+        results_list.all(".result")
       end
     
       # Return the specified results list item. Default to the first item
-      def results_list_items(index=0)
+      def results_list_item(index=0)
         results_list_items[index]
       end
     
