@@ -206,12 +206,12 @@ module NyuLibraries
       
       # Return the array of pagination elements
       def pagination_elements()
-        results.all(".pagination")
+        results_list.all(".pagination")
       end
       
       # Return the results list element
       def results_list()
-        page.find(:xpath, "//*[@id='resultsList']")
+        page.find(:css, ".results")
       rescue
         return nil
       end

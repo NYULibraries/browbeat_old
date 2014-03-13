@@ -11,5 +11,5 @@ Feature: Bobcat Default Precision Operator Search brief results page.
 	And I should see common elements
 	And I should see facets
 	And I should see results
-	And I should see 8 result items
+	And I should see 10 result items
 	And I should see pagination

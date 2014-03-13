@@ -3,19 +3,19 @@ module NyuLibraries
     module StepHelpers
       extend self
       def bobcat
-        "http://bobcat.library.nyu.edu/"
+        "http://bobcatdev.library.nyu.edu/"
       end
       
       def have_results
-        have_xpath("//div[@id='results']")
+        have_css(".results")
       end
       
-      def have_results_header
-        have_xpath("//div[@id='results']/div[@id='results_header']")
+      def have_results_count
+        have_xpath("//p[@id='count']")
       end
       
       def have_results_list
-        have_xpath("//*[@id='resultsList']")
+        have_css(".result")
       end
       
       def have_facets

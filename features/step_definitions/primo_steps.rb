@@ -16,7 +16,7 @@ end
 
 Then(/^I should see common elements$/) do
   page.should have_header
-  expect(bobcat_header_spans.size).to eq(2)
+  bobcat_header_spans.should have_exactly(3).spans
   bobcat_header_spans.each do |span|
     expect(span.text).to eq("")
   end
@@ -34,15 +34,15 @@ end
 
 Then(/^I should see results$/) do
   page.should have_results
-  page.should have_results_header
+  page.should have_results_count
   page.should have_results_list
-  results_list.tag_name.should eq("ul")
+  results_list.tag_name.should eq("div")
 end
 
 Then(/^I should see (\d+) result items$/) do |number_of_results|
-  results_list_items.size.should have_exactly(number_of_results).items
+  results_list_items.should have_exactly(number_of_results).items
   results_list_items.each do |result|
-    result.tag_name.should eq("li")
+    result.tag_name.should eq("div")
   end
 end
 
