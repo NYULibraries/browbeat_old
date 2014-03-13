@@ -2,7 +2,6 @@ module NyuLibraries
   module Primo
     module StepHelpers
       extend self
-      
       def bobcat
         "http://bobcat.library.nyu.edu/"
       end
