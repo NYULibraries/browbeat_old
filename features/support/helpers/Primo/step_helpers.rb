@@ -6,6 +6,14 @@ module NyuLibraries
         "http://bobcatdev.library.nyu.edu/"
       end
       
+      def send_share_button
+        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn')
+      end
+      
+      def send_share_save_option_list
+        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').all(:css, ".save_option")
+      end
+      
       def have_results
         have_css(".results")
       end

@@ -53,13 +53,3 @@ Then(/^I should see pagination$/) do
     pagination_element.tag_name.should eq("div")
   end
 end
-
-When(/^I click on send\/share$/) do
-  require 'debugger'; debugger
-  
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should see "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
