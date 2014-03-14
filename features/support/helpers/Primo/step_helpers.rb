@@ -6,6 +6,14 @@ module NyuLibraries
         "http://bobcatdev.library.nyu.edu/"
       end
       
+      def rss_link
+        find(:css, ".nyulibrary_icons_feed")
+      end
+      
+      def rss_image_style
+        rss_link.native.css_value('backgroundImage')
+      end
+      
       def send_share_button
         results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn')
       end
