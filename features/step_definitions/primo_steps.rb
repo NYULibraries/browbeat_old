@@ -53,3 +53,11 @@ Then(/^I should see pagination$/) do
     pagination_element.tag_name.should eq("div")
   end
 end
+
+Then(/^I fill in "(.*?)" with "(.*?)"$/) do |field_name, field_value|
+  fill_in field_name, :with => field_value
+end
+
+Then(/^I click on the "(.*?)" button$/) do |button_text|
+  element_with_value(button_text).click
+end

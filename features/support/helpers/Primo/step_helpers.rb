@@ -11,9 +11,29 @@ module NyuLibraries
       end
       
       def send_share_save_option_list
-        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').all(:css, ".save_option")
+        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').all('ul li')
       end
       
+      def send_share_option(option_name)
+        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').find(:xpath, ".//a[text()='#{option_name}']")
+      end
+      
+      def modal_body
+        modal.find(:css, ".modal-body")
+      end
+      
+      def element_with_value(button_text)
+        find(:xpath, "//*[@value='#{button_text}']")
+      end
+      
+      def email_form_field_for(field, type = 'input')
+        find(:xpath, "//form[@id='emailForm']").find(:xpath, ".//#{type}[@id='#{field}']")
+      end
+      
+      def email_form_label_for(label)
+        find(:xpath, "//form[@id='emailForm']//label[@for='#{label}']")
+      end
+            
       def have_results
         have_css(".results")
       end
