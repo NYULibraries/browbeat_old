@@ -6,34 +6,22 @@ module NyuLibraries
         "http://bobcatdev.library.nyu.edu/"
       end
       
+      def have_rss_image
+        have_css(".icons-famfamfam-rss")
+      end
+      
+      def rss_image_style
+        rss_link.native.css_value('backgroundImage')
+      end
+      
       def send_share_button
         results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn')
       end
       
       def send_share_save_option_list
-        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').all('ul li')
+        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').all(:css, ".save_option")
       end
       
-      def send_share_option(option_name)
-        results_list_items.first.find(:xpath, ".//*[@id='share-dropdown']").find(:css, '.btn').find(:xpath, ".//a[text()='#{option_name}']")
-      end
-      
-      def modal_body
-        modal.find(:css, ".modal-body")
-      end
-      
-      def element_with_value(button_text)
-        find(:xpath, "//*[@value='#{button_text}']")
-      end
-      
-      def email_form_field_for(field, type = 'input')
-        find(:xpath, "//form[@id='emailForm']").find(:xpath, ".//#{type}[@id='#{field}']")
-      end
-      
-      def email_form_label_for(label)
-        find(:xpath, "//form[@id='emailForm']//label[@for='#{label}']")
-      end
-            
       def have_results
         have_css(".results")
       end
