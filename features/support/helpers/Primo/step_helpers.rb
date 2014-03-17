@@ -6,8 +6,8 @@ module NyuLibraries
         "http://bobcatdev.library.nyu.edu/"
       end
       
-      def rss_link
-        find(:css, ".nyulibrary_icons_feed")
+      def have_rss_image
+        have_css(".icons-famfamfam-rss")
       end
       
       def rss_image_style
