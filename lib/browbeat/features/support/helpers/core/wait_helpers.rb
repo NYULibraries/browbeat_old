@@ -3,11 +3,11 @@ module NyuLibraries
     module Helpers
       module WaitHelpers
         extend self
-        WAIT_TIME = 20
+        BROWBEAT_WAIT_TIME = 20
         
         # The common wait for element. If the element is found, it resolves true. A custom message can be set.
         def wait_for(element, msg = "Error waiting for element #{element}")
-          wait = Selenium::WebDriver::Wait.new(:timeout => WAIT_TIME)
+          wait = Selenium::WebDriver::Wait.new(:timeout => BROWBEAT_WAIT_TIME)
           wait.until {
             begin
               send(element)
@@ -21,7 +21,7 @@ module NyuLibraries
         
         # Unlike wait_for, this element waits for an element given the class of that element.
         def wait_for_element_by_class(element_class, msg = "Error waiting for element with class #{element_class}")
-          wait = Selenium::WebDriver::Wait.new(:timeout => WAIT_TIME)
+          wait = Selenium::WebDriver::Wait.new(:timeout => BROWBEAT_WAIT_TIME)
           wait.until {
             begin
               @driver.find_element(:class, element_class)
