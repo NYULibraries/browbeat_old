@@ -2,8 +2,8 @@ module NyuLibraries
   module Primo
     module StepHelpers
       extend self
-      def bobcat
-        "http://bobcatdev.library.nyu.edu/"
+      def bobcat(vid="NYU")
+        "http://bobcatdev.library.nyu.edu/primo_library/libweb/action/search.do?vid=#{vid}"
       end
       
       def have_rss_image
