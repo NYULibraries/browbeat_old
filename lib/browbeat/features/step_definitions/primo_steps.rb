@@ -2,6 +2,10 @@ Given(/^I am on the Bobcat homepage$/) do
   visit bobcat
 end
 
+Given(/^I am on the Bobcat homepage with "(.*?)" view$/) do |view|
+  visit bobcat(view)
+end
+
 When(/^I search for "(.*?)"$/) do |search_term|
   expect{submit_search(search_term)}.to_not raise_error
 end
