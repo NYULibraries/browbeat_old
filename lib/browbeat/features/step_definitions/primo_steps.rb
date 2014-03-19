@@ -23,11 +23,7 @@ Then(/^I should see common elements$/) do
   page.should have_header
   bobcat_header_spans.should have_exactly(3).spans
   bobcat_header_spans.each do |span|
-    if ["nyhistory", "brooklynhistory"].include? @view
-      ["NYU Libraries", "BobCat"].should include(span.text)
-    else
-      expect(span.text).to eq("")
-    end
+    expect(span.text).to eq("")
   end
 end
 
