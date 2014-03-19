@@ -3,6 +3,7 @@ Given(/^I am on the Bobcat homepage$/) do
 end
 
 Given(/^I am on the Bobcat homepage with "(.*?)" view$/) do |view|
+  @view = view
   visit bobcat(view)
 end
 
@@ -22,7 +23,11 @@ Then(/^I should see common elements$/) do
   page.should have_header
   bobcat_header_spans.should have_exactly(3).spans
   bobcat_header_spans.each do |span|
-    expect(span.text).to eq("")
+    if ["nyhistory", "brooklynhistory"].include? @view
+      expect(span.text).to eq("NYU Libraries")
+    else
+      expect(span.text).to eq("")
+    end
   end
 end
 
