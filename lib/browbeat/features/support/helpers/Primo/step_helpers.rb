@@ -53,13 +53,14 @@ module NyuLibraries
       def should_have_breadcrumbs
         nav1.tag_name.should eq("nav")
         breadcrumbs.tag_name.should eq("ul")
+        breadcrumb_items.should have_at_least(1).item
         breadcrumb_items.should have_at_most(4).items
       end
       
       def should_have_sidebar
         sidebar.tag_name.should eq("div")
-        sidebar_boxes.should have_at_most(3).boxes
         sidebar_boxes.should have_at_least(1).box
+        sidebar_boxes.should have_at_most(4).boxes
       end
       
       def should_have_search_form
