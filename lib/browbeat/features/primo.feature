@@ -6,6 +6,7 @@ Feature: Bobcat Default Precision Operator Search brief results page.
 
   Scenario: Default Precision Operator Search brief results.
     Given I am on the Bobcat homepage
+	Then I should see common elements
     When I search for "virtual inequality"
     Then I should see that the title of default search page is "BobCat - virtual inequality"
 	And I should see common elements
@@ -13,3 +14,5 @@ Feature: Bobcat Default Precision Operator Search brief results page.
 	And I should see results
 	And I should see 10 result items
 	And I should see pagination
+	When I click the details link for result item number "1"
+	Then I should see common elements

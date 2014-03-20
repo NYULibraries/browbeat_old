@@ -25,6 +25,11 @@ Then(/^I should see common elements$/) do
   bobcat_header_spans.each do |span|
     expect(span.text).to eq("")
   end
+  should_have_breadcrumbs
+  should_have_sidebar
+  should_have_search_form
+  should_have_tabs
+  should_have_footer
 end
 
 Then(/^I should see facets$/) do
@@ -57,4 +62,8 @@ Then(/^I should see pagination$/) do
   pagination_elements.each do |pagination_element|
     pagination_element.tag_name.should eq("div")
   end
+end
+
+When(/^I click the details link for result item number "(.*?)"$/) do |item_number|
+  click_details_link(item_number.to_i-1)
 end

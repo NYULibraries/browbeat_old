@@ -49,6 +49,31 @@ module NyuLibraries
       def have_facet_list
         have_css('.facet_list')
       end
+      
+      def should_have_breadcrumbs
+        nav1.tag_name.should eq("nav")
+        breadcrumbs.tag_name.should eq("ul")
+        breadcrumb_items.should have_at_most(4).items
+      end
+      
+      def should_have_sidebar
+        sidebar.tag_name.should eq("div")
+        sidebar_boxes.should have_at_most(3).boxes
+      end
+      
+      def should_have_search_form
+        search_container.tag_name.should eq("div")
+        search_form.tag_name.should eq("form")
+      end
+      
+      def should_have_tabs
+        tabs.tag_name.should eq("ul")
+        tab_list.should have_at_least(1).tab
+      end
+      
+      def should_have_footer
+        footer.tag_name.should eq("footer")
+      end
     end
   end
 end

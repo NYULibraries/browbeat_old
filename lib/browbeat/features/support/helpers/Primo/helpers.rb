@@ -129,7 +129,7 @@ module NyuLibraries
       # Return the array of sidebar boxes
       def sidebar_boxes()
         wait_for_sidebar
-        sidebar.find_elements(:class, "box")
+        sidebar.all(:css, ".navbar")
       end
     
       # Return the specified sidebar box. Default to the first box.
@@ -191,7 +191,7 @@ module NyuLibraries
     
       # Return the search_form element
       def search_form()
-        search_container.find_element(:name, "searchForm")
+        search_container.find("form")
       end
       
       # Return the array of facet boxes
@@ -252,7 +252,7 @@ module NyuLibraries
       
       # Return an array of Primo details link elements
       def details_links()
-        results_list.find_elements(:css, ".fulldetails a")
+        results_list.all(:css, ".fulldetails a")
       end
       
       # Return the specified Primo details link. Default to the first checkbox.
@@ -288,17 +288,39 @@ module NyuLibraries
         eshelf_titles[index]
       end
       
+      def search_container
+        page.find(:css, ".search.with-tabs")
+      end
+      
+      def tabs
+        page.find(:css, ".nav.nav-tabs")
+      end
+      
+      def tab_list
+        tabs.all("li")
+      end
+      
+      def footer
+        page.find("footer")
+      end
+      
+      def breadcrumbs
+        nav1.find(:css, ".nyu-breadcrumbs")
+      end
+      
+      def breadcrumb_items
+        breadcrumbs.all("li")
+      end
+      
       def wait_for_sidebar()
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        assert_nothing_raised(Selenium::WebDriver::Error::TimeOutError, "Error waiting for search field for url #{driver.current_url} view #{@view} and tab #{@tab}.") {
-          wait.until {
-            begin
-              sidebar
-              true
-            rescue Selenium::WebDriver::Error::NoSuchElementError => e
-              false
-            end
-          }
+        wait.until {
+          begin
+            sidebar
+            true
+          rescue Selenium::WebDriver::Error::NoSuchElementError => e
+            false
+          end
         }
       end
     
@@ -331,11 +353,7 @@ module NyuLibraries
       # Wait for the full details page for the given 'title' to render
       def wait_for_details(title)
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        assert_nothing_raised(Selenium::WebDriver::Error::TimeOutError, "Error waiting for details for url #{driver.current_url} view #{@view} and tab #{@tab}.") {
-          wait.until {
-            driver.title.eql?("BobCat - #{title}")
-          }
-        }
+        wait.until { driver.title.eql?("BobCat - #{title}") }
       end
       
       # Wait for the email modal to display.  Generally Primo::Helpers#click_email_link should be used instead
@@ -479,48 +497,6 @@ module NyuLibraries
         sort_select = Selenium::WebDriver::Support::Select.new(driver.find_element(:id, "srt"))
         sort_select.select_by(:value, sort_value)
       end
-    
-      # def header?()
-      #   # Is the header div present?
-      #   assert_equal("div", header.tag_name.downcase, "Tag name of header element is not 'div' for view #{@view} and tab #{@tab}.")
-      #   bobcat_spans = header.find_elements(:tag_name, "span")
-      #   assert_equal(2, bobcat_spans.size(), "Header spans return an unexpected size for view #{@view} and tab #{@tab}.")
-      #   bobcat_spans.each do |span|
-      #     # The header spans are hidden
-      #     assert_equal("", span.text, "Header span is not hidden for view #{@view} and tab #{@tab}.")
-      #   end
-      # end
-      # 
-      # def nav1?()
-      #   # Is the nav1 div present?
-      #   assert_equal("div", nav1.tag_name.downcase, "Tag name of nav1 element is not 'div' for view #{@view} and tab #{@tab}.")
-      #   assert_equal("ul", nav1.find_element(:class, "floatLeft").tag_name.downcase, "Tag name of left nav1 list element is not 'ul' for view #{@view} and tab #{@tab}.")
-      #   assert_equal("ul", nav1.find_element(:class, "floatRight").tag_name.downcase, "Tag name of right nav1 list element is not 'ul' for view #{@view} and tab #{@tab}.")
-      # end
-      # 
-      # def sidebar?()
-      #   # Is the sidebar div present?
-      #   assert_equal("div", sidebar.tag_name.downcase, "Tag name of sidebar element is not 'div' for view #{@view} and tab #{@tab}.")
-      #   assert((not sidebar_boxes.empty?), "Sidebar boxes are empty for view #{@view} and tab #{@tab}.")
-      # end
-      # 
-      # def search?()
-      #   # Is the search_container div present?
-      #   assert_equal("div", search_container.tag_name.downcase, "Tag name of search container element is not 'div' for view #{@view} and tab #{@tab}.")
-      #   tabs?
-      #   assert_equal("form", search_form.tag_name.downcase, "Tag name of search form element is not 'form' for view #{@view} and tab #{@tab}.")
-      # end
-      # 
-      # def tabs?()
-      #   assert_equal("div", tabs.tag_name.downcase, "Tag name of tabs element is not 'div' for view #{@view} and tab #{@tab}.")
-      #   assert((not tabs.find_elements(:tag_name, "li").empty?), "Tabs are empty for view #{@view} and tab #{@tab}.")
-      # end
-      # 
-      # def footer?()
-      #   # Is the footer div present?
-      #   assert_equal("div", footer.tag_name.downcase, "Tag name of footer element is not 'div' for view #{@view} and tab #{@tab}.")
-      #   assert_not_nil(footer.text.match("Powered by Ex Libris Primo"), "Footer text is unexpected for view #{@view} and tab #{@tab}.")
-      # end
     end
   end
 end
