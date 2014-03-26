@@ -7,7 +7,7 @@ module NyuLibraries
       end
       
       def have_rss_image
-        have_css(".icons-famfamfam-rss")
+        have_css(".icons-famfamfam-feed")
       end
       
       def rss_image_style
