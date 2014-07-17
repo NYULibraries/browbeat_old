@@ -11,13 +11,12 @@ Gem::Specification.new do |s|
   s.authors     = ["hab278"]
   s.email       = 'hab278@nyu.edu'
   s.homepage    = "https://github.com/NYULibraries/browbeat"
-  
+
   s.files       = Dir["{lib,config}/**/*"] + ["Figsfile", "Gemfile", "README.md"]
-  
-  s.add_dependency "sauce-cucumber"
-  s.add_dependency "sauce-connect"
-  s.add_dependency "figs"
-  s.add_dependency "capybara"
-  s.add_development_dependency "debugger"
-  s.add_dependency "rspec"
+
+  s.add_dependency "sauce-cucumber", "~> 3"
+  s.add_dependency "sauce-connect", "~> 3"
+  s.add_dependency "figs", "~> 2"
+  s.add_dependency "capybara", "~> 2"
+  s.add_dependency "rspec", "~> 2"
 end
