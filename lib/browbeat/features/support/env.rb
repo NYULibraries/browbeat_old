@@ -3,9 +3,9 @@ require 'capybara'
 require 'rspec'
 
 if ENV.fetch("SAUCE","").downcase.eql? "true"
-  require 'sauce/cucumber'
   require 'figs'
   Figs.load()
+  require 'sauce/cucumber'
 end
 
 Capybara.default_driver = :selenium
