@@ -9,7 +9,7 @@ if ENV.fetch("SAUCE","").downcase.eql? "true"
 end
 
 Capybara.default_driver = :selenium
-Capybara.default_wait_time = 10
+Capybara.default_max_wait_time = 10
 
 require_relative "helpers/core/dynamic_helpers"
 require_relative "helpers/core/login_helpers"
