@@ -91,5 +91,8 @@ DEPENDENCIES
   capybara (~> 2)
   figs (~> 2)
   rspec (~> 2)
-  sauce-connect (~> 3)
-  sauce-cucumber (~> 3)
+  sauce-connect
+  sauce-cucumber
+
+BUNDLED WITH
+   1.11.2
